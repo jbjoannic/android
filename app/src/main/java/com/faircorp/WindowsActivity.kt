@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.faircorp.model.ApiServices
 import com.faircorp.model.OnWindowSelectedListener
 import com.faircorp.model.WindowAdapter
-import com.faircorp.model.WindowService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
 class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
-    val windowService = WindowService()
+    /*val windowService = WindowService()*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        print("heaters")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_windows)
         val recyclerView = findViewById<RecyclerView>(R.id.list_windows) // (2)

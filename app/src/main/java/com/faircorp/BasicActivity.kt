@@ -41,6 +41,12 @@ open class BasicActivity : AppCompatActivity() {
             R.id.menu_email -> startActivity(
                 Intent(Intent.ACTION_SENDTO, Uri.parse("mailto://jb.joannic.jbj@gmail.com"))
             )
+            R.id.menu_heaters -> startActivity(
+                Intent(this, HeatersActivity::class.java)
+            )
+            /*R.id.menu_rooms -> startActivity(
+                Intent(this, RoomsActivity::class.java)
+            )*/
 
         }
         return super.onContextItemSelected(item)

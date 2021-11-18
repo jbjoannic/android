@@ -35,8 +35,8 @@ class WindowAdapter(val listener: OnWindowSelectedListener) : RecyclerView.Adapt
         val window = items[position]
         holder.apply {
             name.text = window.name
-            status.text = window.status.toString()
-            room.text = window.room.name
+            status.text = window.windowStatus.toString()
+            room.text = window.roomName
             itemView.setOnClickListener {listener.onWindowSelected((window.id))}
         }
     }

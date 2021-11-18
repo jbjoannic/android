@@ -5,9 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface WindowApiService {
-    @GET("window")
+    @GET("windows")
     fun findAll(): Call<List<WindowDto>>
 
-    @GET("window/{id}")
+    @GET("windows/{id}")
     fun findById(@Path("id") id: Long): Call<WindowDto>
 }
