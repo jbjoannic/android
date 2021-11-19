@@ -10,9 +10,9 @@ import com.faircorp.R
 class HeaterAdapter(val listener: OnHeaterSelectedListener) : RecyclerView.Adapter<HeaterAdapter.HeaterViewHolder>() { // (1)
 
     inner class HeaterViewHolder(view: View) : RecyclerView.ViewHolder(view) { // (2)
-        val name: TextView = view.findViewById(R.id.txt_heater_name3)
-        val room: TextView = view.findViewById(R.id.item_room_name)
-        val status: TextView = view.findViewById(R.id.txt_status_heater)
+        val name: TextView = view.findViewById(R.id.txt_item_heater_name)
+        val room: TextView = view.findViewById(R.id.txt_item_heater_room_name)
+        val status: TextView = view.findViewById(R.id.txt_item_heater_status)
     }
 
     private val items = mutableListOf<HeaterDto>() // (3)

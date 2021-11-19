@@ -1,7 +1,6 @@
 package com.faircorp
 
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -11,30 +10,26 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-const val WINDOW_NAME_PARAM2 = "com.faircorp.windowname.attribute"
+const val BUILDING_NAME_PARAM2 = "com.faircorp.buildingname.attribute"
 
-class WindowActivity : BasicActivity() {
+class BuildingActivity : BasicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_window)
+        setContentView(R.layout.activity_building)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
+        val id = intent.getLongExtra(BUILDING_NAME_PARAM2,0)
         val listArg: MutableList<String?> = mutableListOf()
-
-
         lifecycleScope.launch(Dispatchers.Default) { // (1)
-            runCatching { ApiServices().windowsApiService.findById(id).execute() } // (2)
+            runCatching { ApiServices().buildingsApiService.findById(id).execute() } // (2)
                 .onSuccess {
                     val iname:String? = it.body()?.name
-                    val iRoomName:String? = it.body()?.roomName
-                    val iStatus: String = it.body()?.windowStatus.toString()
+                    val iOutsideTemperature:String? = it.body()?.outsideTemperature.toString()
                     listArg.add(iname)
-                    listArg.add(iRoomName)
-                    listArg.add(iStatus)
+                    listArg.add(iOutsideTemperature)
                     withContext(context = Dispatchers.Main) { // (3)
                         Toast.makeText(
                             applicationContext,
-                            "Success $iname, $iRoomName, $iStatus",
+                            "Success $iname, $iOutsideTemperature",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -43,23 +38,18 @@ class WindowActivity : BasicActivity() {
                     withContext(context = Dispatchers.Main) { // (3)
                         Toast.makeText(
                             applicationContext,
-                            "id $id Error on windows loading $it",
+                            "id $id Error on buildings loading $it",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                 }
             withContext(context = Dispatchers.Main) {
-                findViewById<TextView>(R.id.txt_window_name).text = listArg.get(0)
-                findViewById<TextView>(R.id.txt_window_room_name).text = listArg.get(1)
-                findViewById<TextView>(R.id.txt_window_status).text = listArg.get(2)
+                findViewById<TextView>(R.id.txt_building_name).text = listArg.get(0)
+                findViewById<TextView>(R.id.txt_building_outside_temp).text = listArg.get(1)
             }
         }
-
-
     }
-    fun delete(view: View){
-        Toast.makeText(this, "DELETE", Toast.LENGTH_LONG).show()
-    }
+
 
 
 

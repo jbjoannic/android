@@ -44,9 +44,12 @@ open class BasicActivity : AppCompatActivity() {
             R.id.menu_heaters -> startActivity(
                 Intent(this, HeatersActivity::class.java)
             )
-            /*R.id.menu_rooms -> startActivity(
+            R.id.menu_rooms -> startActivity(
                 Intent(this, RoomsActivity::class.java)
-            )*/
+            )
+            R.id.menu_buildings -> startActivity(
+                Intent(this, BuildingsActivity::class.java)
+            )
 
         }
         return super.onContextItemSelected(item)

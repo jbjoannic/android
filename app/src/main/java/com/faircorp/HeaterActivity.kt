@@ -25,13 +25,15 @@ class HeaterActivity : BasicActivity() {
                     val iname:String? = it.body()?.name
                     val iRoomName:String? = it.body()?.roomName
                     val iStatus: String = it.body()?.heaterStatus.toString()
+                    val iPower: String = it.body()?.power.toString()
                     listArg.add(iname)
                     listArg.add(iRoomName)
                     listArg.add(iStatus)
+                    listArg.add(iPower)
                     withContext(context = Dispatchers.Main) { // (3)
                         Toast.makeText(
                             applicationContext,
-                            "Success $iname, $iRoomName, $iStatus",
+                            "Success $iname, $iRoomName, $iStatus, $iPower",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -46,9 +48,10 @@ class HeaterActivity : BasicActivity() {
                     }
                 }
             withContext(context = Dispatchers.Main) {
-                findViewById<TextView>(R.id.text_name_heater2).text = listArg.get(0)
+                findViewById<TextView>(R.id.txt_heater_name).text = listArg.get(0)
                 findViewById<TextView>(R.id.txt_heater_room_name).text = listArg.get(1)
                 findViewById<TextView>(R.id.txt_heater_status).text = listArg.get(2)
+                findViewById<TextView>(R.id.txt_heater_power).text = listArg.get(3)
             }
         }
     }
