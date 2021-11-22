@@ -1,6 +1,7 @@
 package com.faircorp
 
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -53,6 +54,56 @@ class HeaterActivity : BasicActivity() {
                 findViewById<TextView>(R.id.txt_heater_status).text = listArg.get(2)
                 findViewById<TextView>(R.id.txt_heater_power).text = listArg.get(3)
             }
+        }
+    }
+
+    fun switchHeater(view: View){
+        val id = intent.getLongExtra(HEATER_NAME_PARAM2,0)
+        lifecycleScope.launch(Dispatchers.Default) { // (1)
+            runCatching { ApiServices().heatersApiService.switchStatus(id).execute() } // (2)
+                .onSuccess {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Success Switch",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+                .onFailure {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Failed Switch",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+        }
+    }
+
+    fun deleteHeater(view: View){
+        val id = intent.getLongExtra(HEATER_NAME_PARAM2,0)
+        lifecycleScope.launch(Dispatchers.Default) { // (1)
+            runCatching { ApiServices().heatersApiService.delete(id).execute() } // (2)
+                .onSuccess {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Success Delete",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+                .onFailure {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Failed Delete",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
         }
     }
 

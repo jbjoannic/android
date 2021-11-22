@@ -1,6 +1,8 @@
 package com.faircorp
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +13,8 @@ import kotlinx.coroutines.withContext
 
 
 const val ROOM_NAME_PARAM2 = "com.faircorp.roomname.attribute"
+const val WINDOW_LIST_CONFIG3 = "com.faircorp.windowconfig.attribute"
+const val HEATER_LIST_CONFIG3 = "com.faircorp.heaterconfig.attribute"
 
 class RoomActivity : BasicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +60,43 @@ class RoomActivity : BasicActivity() {
                 findViewById<TextView>(R.id.txt_room_floor).text = listArg.get(3)
                 findViewById<TextView>(R.id.txt_room_building_name).text = listArg.get(4)
             }
+        }
+    }
+
+    fun SelectByRoom(view: View) {
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+        val intent = Intent(this, WindowsActivity::class.java).putExtra(WINDOW_LIST_CONFIG3, id)
+        startActivity(intent)
+    }
+
+    fun SelectHeatersByRoom(view: View){
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+        val intent = Intent(this, HeatersActivity::class.java).putExtra(HEATER_LIST_CONFIG3, id)
+        startActivity(intent)
+    }
+
+    fun deleteRoom(view: View){
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+        lifecycleScope.launch(Dispatchers.Default) { // (1)
+            runCatching { ApiServices().roomsApiService.delete(id).execute() } // (2)
+                .onSuccess {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Success Delete",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+                .onFailure {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Failed Delete",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
         }
     }
 

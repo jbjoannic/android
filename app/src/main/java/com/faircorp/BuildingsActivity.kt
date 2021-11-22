@@ -1,8 +1,8 @@
 package com.faircorp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -45,8 +45,13 @@ class BuildingsActivity : BasicActivity(), OnBuildingSelectedListener {
         }
     }
 
-    override fun onBuildingSelected(id: Long) {
+    override fun onBuildingSelected(id: Long?) {
         val intent = Intent(this, BuildingActivity::class.java).putExtra(BUILDING_NAME_PARAM, id)
+        startActivity(intent)
+    }
+
+    fun createBuildings(view: View){
+        val intent = Intent(this, BuildingsCreateActivity::class.java)
         startActivity(intent)
     }
 }

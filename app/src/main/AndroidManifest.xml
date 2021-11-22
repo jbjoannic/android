@@ -24,11 +24,19 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".WindowsCreateActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".HeatersActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".HeaterActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".HeatersCreateActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -40,11 +48,19 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".RoomsCreateActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".BuildingsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".BuildingActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BuildingsCreateActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

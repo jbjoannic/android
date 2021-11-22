@@ -22,6 +22,10 @@ class RoomAdapter(val listener: OnRoomSelectedListener) : RecyclerView.Adapter<R
         notifyDataSetChanged()
     }
 
+    fun updateSpinner(rooms: List<RoomDto>) {
+
+    }
+
     override fun getItemCount(): Int = items.size // (5)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomViewHolder { // (6)

@@ -5,17 +5,24 @@
       <map>
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_basic.xml" value="0.176" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_building.xml" value="0.26403985507246375" />
-        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_buildings.xml" value="0.26403985507246375" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_buildings.xml" value="0.4" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_buildings_create.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_buildings_item.xml" value="0.6" />
-        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heater.xml" value="0.536" />
-        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heaters.xml" value="0.176" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heater.xml" value="0.264" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heaters.xml" value="0.31356898517673887" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heaters_create.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heaters_create_item.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_heaters_item.xml" value="0.6" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_room.xml" value="0.26403985507246375" />
-        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_rooms.xml" value="0.26403985507246375" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_rooms.xml" value="0.46625222024866786" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_rooms_create.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_rooms_create_item.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_rooms_item.xml" value="0.536" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_window.xml" value="0.25833333333333336" />
-        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_windows.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_windows.xml" value="0.24422735346358793" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_windows_create.xml" value="0.4" />
+        <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_windows_create_item.xml" value="0.1" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/activity_windows_item.xml" value="0.536" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/content_basic.xml" value="0.176" />
         <entry key="..\:/Users/jean-/Documents/Mines_2A/Majeure/Prog Web/Demo Spring/android/app/src/main/res/layout/fragment_first.xml" value="0.4" />

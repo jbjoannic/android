@@ -1,5 +1,6 @@
 package com.faircorp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -57,8 +58,54 @@ class WindowActivity : BasicActivity() {
 
 
     }
-    fun delete(view: View){
-        Toast.makeText(this, "DELETE", Toast.LENGTH_LONG).show()
+    fun switchWindow(view: View){
+        val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
+        lifecycleScope.launch(Dispatchers.Default) { // (1)
+            runCatching { ApiServices().windowsApiService.switchStatus(id).execute() } // (2)
+                .onSuccess {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Success Switch",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+                .onFailure {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Failed Switch",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+        }
+    }
+
+    fun deleteWindow(view: View){
+        val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
+        lifecycleScope.launch(Dispatchers.Default) { // (1)
+            runCatching { ApiServices().windowsApiService.delete(id).execute() } // (2)
+                .onSuccess {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Success Delete",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+                .onFailure {
+                    withContext(context = Dispatchers.Main) { // (3)
+                        Toast.makeText(
+                            applicationContext,
+                            "Failed Delete",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+        }
     }
 
 

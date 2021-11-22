@@ -43,11 +43,17 @@
 
 
     <string name="act_button_window_delete">Delete Window</string>
+    <string name="act_button_window_switch">Switch Window</string>
     <string name="act_button_window_create">Create Window</string>
     <string name="act_button_heater_delete">Delete Heater</string>
+    <string name="act_button_heater_switch">Switch Heater</string>
     <string name="act_button_heater_create">Create Heater</string>
     <string name="act_button_room_delete">Delete Room</string>
     <string name="act_button_room_create">Create Room</string>
     <string name="act_button_building_delete">Delete Building</string>
     <string name="act_button_building_create">Create Building</string>
+
+    <string name="act_list_windows">Windows List</string>
+    <string name="act_list_heaters">Heaters List</string>
+    <string name="act_list_rooms">Rooms List</string>
 </resources>
