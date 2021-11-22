@@ -18,13 +18,13 @@ class HeaterActivity : BasicActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heater)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val id = intent.getLongExtra(HEATER_NAME_PARAM2,0)
+        val id = intent.getLongExtra(HEATER_NAME_PARAM2, 0)
         val listArg: MutableList<String?> = mutableListOf()
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().heatersApiService.findById(id).execute() } // (2)
                 .onSuccess {
-                    val iname:String? = it.body()?.name
-                    val iRoomName:String? = it.body()?.roomName
+                    val iname: String? = it.body()?.name
+                    val iRoomName: String? = it.body()?.roomName
                     val iStatus: String = it.body()?.heaterStatus.toString()
                     val iPower: String = it.body()?.power.toString()
                     listArg.add(iname)
@@ -57,8 +57,8 @@ class HeaterActivity : BasicActivity() {
         }
     }
 
-    fun switchHeater(view: View){
-        val id = intent.getLongExtra(HEATER_NAME_PARAM2,0)
+    fun switchHeater(view: View) {
+        val id = intent.getLongExtra(HEATER_NAME_PARAM2, 0)
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().heatersApiService.switchStatus(id).execute() } // (2)
                 .onSuccess {
@@ -82,8 +82,8 @@ class HeaterActivity : BasicActivity() {
         }
     }
 
-    fun deleteHeater(view: View){
-        val id = intent.getLongExtra(HEATER_NAME_PARAM2,0)
+    fun deleteHeater(view: View) {
+        val id = intent.getLongExtra(HEATER_NAME_PARAM2, 0)
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().heatersApiService.delete(id).execute() } // (2)
                 .onSuccess {
@@ -106,8 +106,6 @@ class HeaterActivity : BasicActivity() {
                 }
         }
     }
-
-
 
 
 }

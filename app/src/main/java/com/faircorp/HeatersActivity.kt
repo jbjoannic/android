@@ -8,12 +8,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.faircorp.model.*
+import com.faircorp.model.ApiServices
+import com.faircorp.model.HeaterAdapter
+import com.faircorp.model.OnHeaterSelectedListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 const val HEATER_NAME_PARAM = "com.faircorp.heatername.attribute"
 const val HEATER_LIST_CONFIG2 = "com.faircorp.heaterconfig.attribute"
+
 class HeatersActivity : BasicActivity(), OnHeaterSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +31,7 @@ class HeatersActivity : BasicActivity(), OnHeaterSelectedListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-        val config = intent.getLongExtra(HEATER_LIST_CONFIG2,-11)
+        val config = intent.getLongExtra(HEATER_LIST_CONFIG2, -11)
         val compar: Long = -11
 
         if (config.equals(compar)) {
@@ -50,7 +54,9 @@ class HeatersActivity : BasicActivity(), OnHeaterSelectedListener {
             }
         } else {
             lifecycleScope.launch(context = Dispatchers.IO) { // (1)
-                runCatching { ApiServices().roomsApiService.findHeatersByRoom(config).execute() } // (2)
+                runCatching {
+                    ApiServices().roomsApiService.findHeatersByRoom(config).execute()
+                } // (2)
                     .onSuccess {
                         withContext(context = Dispatchers.Main) { // (3)
                             adapter.update(it.body() ?: emptyList())
@@ -74,7 +80,7 @@ class HeatersActivity : BasicActivity(), OnHeaterSelectedListener {
         startActivity(intent)
     }
 
-    fun createHeaters(view: View){
+    fun createHeaters(view: View) {
         val intent = Intent(this, HeatersCreateActivity::class.java)
         startActivity(intent)
     }

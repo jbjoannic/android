@@ -20,13 +20,13 @@ class BuildingActivity : BasicActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_building)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val id = intent.getLongExtra(BUILDING_NAME_PARAM2,0)
+        val id = intent.getLongExtra(BUILDING_NAME_PARAM2, 0)
         val listArg: MutableList<String?> = mutableListOf()
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().buildingsApiService.findById(id).execute() } // (2)
                 .onSuccess {
-                    val iname:String? = it.body()?.name
-                    val iOutsideTemperature:String? = it.body()?.outsideTemperature.toString()
+                    val iname: String? = it.body()?.name
+                    val iOutsideTemperature: String? = it.body()?.outsideTemperature.toString()
                     listArg.add(iname)
                     listArg.add(iOutsideTemperature)
                     withContext(context = Dispatchers.Main) { // (3)
@@ -53,8 +53,8 @@ class BuildingActivity : BasicActivity() {
         }
     }
 
-    fun deleteBuilding(view: View){
-        val id = intent.getLongExtra(BUILDING_NAME_PARAM2,0)
+    fun deleteBuilding(view: View) {
+        val id = intent.getLongExtra(BUILDING_NAME_PARAM2, 0)
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().buildingsApiService.delete(id).execute() } // (2)
                 .onSuccess {
@@ -78,13 +78,11 @@ class BuildingActivity : BasicActivity() {
         }
     }
 
-    fun SelectRoomByBuilding(view: View){
-        val id = intent.getLongExtra(BUILDING_NAME_PARAM2,0)
+    fun SelectRoomByBuilding(view: View) {
+        val id = intent.getLongExtra(BUILDING_NAME_PARAM2, 0)
         val intent = Intent(this, RoomsActivity::class.java).putExtra(ROOM_LIST_CONFIG3, id)
         startActivity(intent)
     }
-
-
 
 
 }

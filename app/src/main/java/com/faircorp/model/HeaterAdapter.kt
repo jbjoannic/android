@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.faircorp.R
 
-class HeaterAdapter(val listener: OnHeaterSelectedListener) : RecyclerView.Adapter<HeaterAdapter.HeaterViewHolder>() { // (1)
+class HeaterAdapter(val listener: OnHeaterSelectedListener) :
+    RecyclerView.Adapter<HeaterAdapter.HeaterViewHolder>() { // (1)
 
     inner class HeaterViewHolder(view: View) : RecyclerView.ViewHolder(view) { // (2)
         val name: TextView = view.findViewById(R.id.txt_item_heater_name)
@@ -37,9 +38,10 @@ class HeaterAdapter(val listener: OnHeaterSelectedListener) : RecyclerView.Adapt
             name.text = heater.name
             status.text = heater.heaterStatus.toString()
             room.text = heater.roomName
-            itemView.setOnClickListener {listener.onHeaterSelected((heater.id))}
+            itemView.setOnClickListener { listener.onHeaterSelected((heater.id)) }
         }
     }
+
     override fun onViewRecycled(holder: HeaterViewHolder) {
         super.onViewRecycled(holder)
         holder.apply {

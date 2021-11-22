@@ -8,11 +8,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.faircorp.model.*
+import com.faircorp.model.ApiServices
+import com.faircorp.model.BuildingAdapter
+import com.faircorp.model.OnBuildingSelectedListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 const val BUILDING_NAME_PARAM = "com.faircorp.buildingname.attribute"
+
 class BuildingsActivity : BasicActivity(), OnBuildingSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +54,7 @@ class BuildingsActivity : BasicActivity(), OnBuildingSelectedListener {
         startActivity(intent)
     }
 
-    fun createBuildings(view: View){
+    fun createBuildings(view: View) {
         val intent = Intent(this, BuildingsCreateActivity::class.java)
         startActivity(intent)
     }

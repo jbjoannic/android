@@ -1,7 +1,9 @@
 package com.faircorp
+
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.faircorp.model.ApiServices
 import com.faircorp.model.BuildingDto
@@ -17,9 +19,10 @@ class BuildingsCreateActivity : BasicActivity() {
 
     }
 
-    fun createBuilding(view: View){
+    fun createBuilding(view: View) {
         val buildingName = findViewById<EditText>(R.id.edit_building_name).text.toString()
-        val buildingOutsideTemperature = findViewById<EditText>(R.id.edit_building_outside_temp).text.toString().toDoubleOrNull()
+        val buildingOutsideTemperature =
+            findViewById<EditText>(R.id.edit_building_outside_temp).text.toString().toDoubleOrNull()
         val buildingDto = BuildingDto(null, buildingName, buildingOutsideTemperature)
         lifecycleScope.launch(context = Dispatchers.IO) { // (1)
             runCatching { ApiServices().buildingsApiService.create(buildingDto).execute() } // (2)

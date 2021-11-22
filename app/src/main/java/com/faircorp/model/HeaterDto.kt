@@ -1,6 +1,6 @@
 package com.faircorp.model
 
-enum class HeaterStatus{ON,OFF}
+enum class HeaterStatus { ON, OFF }
 
 data class HeaterDto(
     val id: Long?, val name: String, val power: Double?,

@@ -1,6 +1,5 @@
 package com.faircorp
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -19,15 +18,15 @@ class WindowActivity : BasicActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_window)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
+        val id = intent.getLongExtra(WINDOW_NAME_PARAM2, 0)
         val listArg: MutableList<String?> = mutableListOf()
 
 
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().windowsApiService.findById(id).execute() } // (2)
                 .onSuccess {
-                    val iname:String? = it.body()?.name
-                    val iRoomName:String? = it.body()?.roomName
+                    val iname: String? = it.body()?.name
+                    val iRoomName: String? = it.body()?.roomName
                     val iStatus: String = it.body()?.windowStatus.toString()
                     listArg.add(iname)
                     listArg.add(iRoomName)
@@ -58,8 +57,9 @@ class WindowActivity : BasicActivity() {
 
 
     }
-    fun switchWindow(view: View){
-        val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
+
+    fun switchWindow(view: View) {
+        val id = intent.getLongExtra(WINDOW_NAME_PARAM2, 0)
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().windowsApiService.switchStatus(id).execute() } // (2)
                 .onSuccess {
@@ -83,8 +83,8 @@ class WindowActivity : BasicActivity() {
         }
     }
 
-    fun deleteWindow(view: View){
-        val id = intent.getLongExtra(WINDOW_NAME_PARAM2,0)
+    fun deleteWindow(view: View) {
+        val id = intent.getLongExtra(WINDOW_NAME_PARAM2, 0)
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().windowsApiService.delete(id).execute() } // (2)
                 .onSuccess {
@@ -107,7 +107,6 @@ class WindowActivity : BasicActivity() {
                 }
         }
     }
-
 
 
 }

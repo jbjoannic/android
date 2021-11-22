@@ -21,13 +21,13 @@ class RoomActivity : BasicActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2, 0)
         val listArg: MutableList<String?> = mutableListOf()
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().roomsApiService.findById(id).execute() } // (2)
                 .onSuccess {
-                    val iname:String? = it.body()?.name
-                    val iCurrentTemperature:String? = it.body()?.currentTemperature.toString()
+                    val iname: String? = it.body()?.name
+                    val iCurrentTemperature: String? = it.body()?.currentTemperature.toString()
                     val iTargetTemperature: String? = it.body()?.targetTemperature.toString()
                     val iFloor: String? = it.body()?.floor.toString()
                     val iBuildingName: String? = it.body()?.buildingName
@@ -64,19 +64,19 @@ class RoomActivity : BasicActivity() {
     }
 
     fun SelectByRoom(view: View) {
-        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2, 0)
         val intent = Intent(this, WindowsActivity::class.java).putExtra(WINDOW_LIST_CONFIG3, id)
         startActivity(intent)
     }
 
-    fun SelectHeatersByRoom(view: View){
-        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+    fun SelectHeatersByRoom(view: View) {
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2, 0)
         val intent = Intent(this, HeatersActivity::class.java).putExtra(HEATER_LIST_CONFIG3, id)
         startActivity(intent)
     }
 
-    fun deleteRoom(view: View){
-        val id = intent.getLongExtra(ROOM_NAME_PARAM2,0)
+    fun deleteRoom(view: View) {
+        val id = intent.getLongExtra(ROOM_NAME_PARAM2, 0)
         lifecycleScope.launch(Dispatchers.Default) { // (1)
             runCatching { ApiServices().roomsApiService.delete(id).execute() } // (2)
                 .onSuccess {
@@ -99,8 +99,6 @@ class RoomActivity : BasicActivity() {
                 }
         }
     }
-
-
 
 
 }

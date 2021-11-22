@@ -11,11 +11,11 @@ interface BuildingApiService {
     fun findById(@Path("id") id: Long): Call<BuildingDto>
 
     @GET("buildings/{id}/rooms")
-    fun findRoomsByBuilding(@Path("id")id: Long) : Call<List<RoomDto>>
+    fun findRoomsByBuilding(@Path("id") id: Long): Call<List<RoomDto>>
 
     @DELETE("buildings/{id}/delete")
     fun delete(@Path("id") id: Long): Call<Void>
 
     @POST("buildings/create")
-    fun create(@Body buildingDto: BuildingDto) : Call<BuildingDto>
+    fun create(@Body buildingDto: BuildingDto): Call<BuildingDto>
 }

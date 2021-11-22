@@ -3,12 +3,12 @@ package com.faircorp.model
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SpinnerAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.faircorp.R
 
-class WindowAdapter(val listener: OnWindowSelectedListener) : RecyclerView.Adapter<WindowAdapter.WindowViewHolder>() { // (1)
+class WindowAdapter(val listener: OnWindowSelectedListener) :
+    RecyclerView.Adapter<WindowAdapter.WindowViewHolder>() { // (1)
 
     inner class WindowViewHolder(view: View) : RecyclerView.ViewHolder(view) { // (2)
         val name: TextView = view.findViewById(R.id.txt_item_window_name)
@@ -38,9 +38,10 @@ class WindowAdapter(val listener: OnWindowSelectedListener) : RecyclerView.Adapt
             name.text = window.name
             status.text = window.windowStatus.toString()
             room.text = window.roomName
-            itemView.setOnClickListener {listener.onWindowSelected((window.id))}
+            itemView.setOnClickListener { listener.onWindowSelected((window.id)) }
         }
     }
+
     override fun onViewRecycled(holder: WindowViewHolder) {
         super.onViewRecycled(holder)
         holder.apply {

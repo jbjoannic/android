@@ -11,11 +11,11 @@ interface WindowApiService {
     fun findById(@Path("id") id: Long): Call<WindowDto>
 
     @PUT("windows/{id}/switch")
-    fun switchStatus(@Path("id") id: Long) : Call<WindowDto>
+    fun switchStatus(@Path("id") id: Long): Call<WindowDto>
 
     @DELETE("windows/{id}/delete")
     fun delete(@Path("id") id: Long): Call<Void>
 
     @POST("windows/create")
-    fun create(@Body windowDto: WindowDto) : Call<WindowDto>
+    fun create(@Body windowDto: WindowDto): Call<WindowDto>
 }

@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.faircorp.R
 
-class RoomAdapter(val listener: OnRoomSelectedListener) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() { // (1)
+class RoomAdapter(val listener: OnRoomSelectedListener) :
+    RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() { // (1)
 
     inner class RoomViewHolder(view: View) : RecyclerView.ViewHolder(view) { // (2)
         val name: TextView = view.findViewById(R.id.txt_item_room_name)
@@ -39,9 +40,10 @@ class RoomAdapter(val listener: OnRoomSelectedListener) : RecyclerView.Adapter<R
         holder.apply {
             name.text = room.name
             building.text = room.buildingName
-            itemView.setOnClickListener {listener.onRoomSelected((room.id))}
+            itemView.setOnClickListener { listener.onRoomSelected((room.id)) }
         }
     }
+
     override fun onViewRecycled(holder: RoomViewHolder) {
         super.onViewRecycled(holder)
         holder.apply {

@@ -1,7 +1,6 @@
 package com.faircorp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -15,8 +14,10 @@ import com.faircorp.model.WindowAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
 const val WINDOW_LIST_CONFIG2 = "com.faircorp.windowconfig.attribute"
+
 class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
     /*val windowService = WindowService()*/
 
@@ -26,7 +27,7 @@ class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
         val recyclerView = findViewById<RecyclerView>(R.id.list_windows) // (2)
         val adapter = WindowAdapter(this) // (3)
 
-        val config = intent.getLongExtra(WINDOW_LIST_CONFIG2,-11)
+        val config = intent.getLongExtra(WINDOW_LIST_CONFIG2, -11)
         println(config)
         val compar: Long = -11
 
@@ -56,7 +57,9 @@ class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
             }
         } else {
             lifecycleScope.launch(context = Dispatchers.IO) { // (1)
-                runCatching { ApiServices().roomsApiService.findWindowsByRoom(config).execute() } // (2)
+                runCatching {
+                    ApiServices().roomsApiService.findWindowsByRoom(config).execute()
+                } // (2)
                     .onSuccess {
                         withContext(context = Dispatchers.Main) { // (3)
                             adapter.update(it.body() ?: emptyList())
@@ -76,7 +79,6 @@ class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
         }
 
 
-
     }
 
     override fun onWindowSelected(id: Long?) {
@@ -84,7 +86,7 @@ class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
         startActivity(intent)
     }
 
-    fun createWindows(view: View){
+    fun createWindows(view: View) {
         val intent = Intent(this, WindowsCreateActivity::class.java)
         startActivity(intent)
     }
